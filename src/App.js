@@ -14,7 +14,7 @@ import Home from './Pages/Home';
 function App() {
   const classes = useStyles();
 
-  const user = "luke";
+  const user = null;
 
   return (
     <div className={classes.root}>
@@ -38,6 +38,6 @@ const useStyles = makeStyles((theme) => ({
     // background: "#111",
     minHeight: "100vh",
   }
-}))
+}));
 
 export default App;
