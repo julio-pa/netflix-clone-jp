@@ -14,7 +14,7 @@ import Home from './Pages/Home';
 function App() {
   const classes = useStyles();
 
-  const user = "Frank";
+  const user = null;
 
   return (
     <div className={classes.root}>

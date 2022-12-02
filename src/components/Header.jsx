@@ -1,5 +1,7 @@
 import { AppBar, Avatar, makeStyles, Toolbar } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 import logoNetflix from '../img/logo-netflix.png'
 
@@ -9,21 +11,26 @@ const Header = () => {
   const [show, setShow] = useState(false);
 
   const hideHeader = () => {
-    if(window.scrollY > 100){
+    if (window.scrollY > 100) {
       setShow(true)
-    }else{
+    } else {
       setShow(false)
     }
   }
   useEffect(() => {
-    window.addEventListener("scroll", hideHeader)
+    window.addEventListener("scroll", hideHeader);
+    return () => window.removeEventListener("scroll", hideHeader);
   }, []);
 
   return (
     <AppBar elevation={0} position='sticky' className={`${classes.root} ${show && classes.transparent}`}>
       <Toolbar className={classes.toolbar}>
-        <img src={logoNetflix} alt="logo" className={classes.logo} />
-        <Avatar variant='square' style={{cursor:"pointer"}}/>
+        <Link to='/'>
+          <img src={logoNetflix} alt="logo" className={classes.logo} />
+        </Link>
+        <Link to='/profile'>
+        <Avatar variant='square' style={{ cursor: "pointer" }} />
+        </Link>
       </Toolbar>
     </AppBar>
   );
@@ -37,10 +44,10 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     right: 0,
   },
-  transparent:{
+  transparent: {
     backgroundColor: "transparent",
   },
-  toolbar:{
+  toolbar: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
