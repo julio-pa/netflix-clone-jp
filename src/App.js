@@ -35,7 +35,7 @@ function App() {
 
 const useStyles = makeStyles((theme) => ({
   root:{
-    // background: "#111",
+    background: "#111",
     minHeight: "100vh",
   }
 }));

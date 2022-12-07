@@ -1,11 +1,13 @@
-import { Button, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import {  makeStyles, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
 import logo from '../img/logo-netflix.png'
 import heroBanner from '../img/hero-banner.jpg'
 import { NetflixButton, NetflixInput } from '../styled/styledcomponents';
 
 const Login = () => {
   const classes = useStyles();
+
+  const [signIn, setSignIn] = useState(false);
 
   return (
     // TODO: agregar difuminado oscuro en la parte superior e inferior a la igual que enla pagina.
@@ -19,6 +21,7 @@ const Login = () => {
         </Typography>
         {/* //TODO: agregar icono flecha a netflix buttom */}
         <div className={classes.inputBlock}>
+        {/* //TODO: trabajar el input para que  quede igual al de la pagina */}
           <NetflixInput placeholder='Email' />
           <NetflixButton>Comenzar</NetflixButton>
         </div>
