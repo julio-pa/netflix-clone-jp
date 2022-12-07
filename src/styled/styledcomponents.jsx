@@ -6,8 +6,8 @@ export const NetflixInput = styled(InputBase)`
   z-index: 30;
   background: #fff;
   padding:22px;
+  border-radius: ${({radius})=> radius ? "5px": null};
   height:16px;
-  width: 30vw;
   border: none;
 `
 

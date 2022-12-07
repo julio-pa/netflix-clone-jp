@@ -1,8 +1,9 @@
-import {  makeStyles, Typography } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import logo from '../img/logo-netflix.png'
 import heroBanner from '../img/hero-banner.jpg'
 import { NetflixButton, NetflixInput } from '../styled/styledcomponents';
+import SignUp from './SignUp';
 
 const Login = () => {
   const classes = useStyles();
@@ -15,16 +16,23 @@ const Login = () => {
       <img src={logo} className={classes.logo} alt='logo' />
       <NetflixButton className={classes.session}>Iniciar Sesión</NetflixButton>
       <div className={classes.info}>
-        <Typography variant='h4' gutterBottom>Películas y series ilimitadas y mucho más</Typography>
-        <Typography variant='h5'>Disfruta donde quieras. Cancela cuando quieras.</Typography>
-        <Typography variant='h6'>¿Quieres ver Netflix ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Netflix.
-        </Typography>
-        {/* //TODO: agregar icono flecha a netflix buttom */}
-        <div className={classes.inputBlock}>
-        {/* //TODO: trabajar el input para que  quede igual al de la pagina */}
-          <NetflixInput placeholder='Email' />
-          <NetflixButton>Comenzar</NetflixButton>
-        </div>
+        {
+          !signIn ? <SignUp /> : (
+            <>
+              <Typography variant='h4' gutterBottom>Películas y series ilimitadas y mucho más</Typography>
+              <Typography variant='h5'>Disfruta donde quieras. Cancela cuando quieras.</Typography>
+              <Typography variant='h6'>¿Quieres ver Netflix ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Netflix.
+              </Typography>
+              {/* //TODO: agregar icono flecha a netflix buttom */}
+              <div className={classes.inputBlock}>
+                {/* //TODO: trabajar el input para que  quede igual al de la pagina */}
+                <NetflixInput placeholder='Email' />
+                <NetflixButton>Comenzar</NetflixButton>
+              </div>
+            </>
+          )
+        }
+
       </div>
     </div>
   );
