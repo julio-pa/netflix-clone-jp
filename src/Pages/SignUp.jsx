@@ -3,17 +3,19 @@ import React, { useState } from 'react';
 import { NetflixButton, NetflixInput } from '../styled/styledcomponents';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("me@awesomekittens.test");
+  const [password, setPassword] = useState("test1234");
   
   const signIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-  .then((authUser) => console.log(authUser))
+  .then((authUser) => navigate("/"))
   .catch((error) => alert(error.message) );
 
   }
@@ -22,7 +24,7 @@ const SignUp = () => {
   const register = async (e) =>{
     e.preventDefault();
      await createUserWithEmailAndPassword(auth, email, password)
-    .then( authUser => console.log(authUser))
+    .then( authUser => navigate("/"))
     .catch(err=> alert(err.message))
 
 
