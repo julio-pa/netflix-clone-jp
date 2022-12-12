@@ -11,21 +11,21 @@ const SignUp = () => {
 
   const [email, setEmail] = useState("me@awesomekittens.test");
   const [password, setPassword] = useState("test1234");
-  
+
   const signIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-  .then((authUser) => navigate("/"))
-  .catch((error) => alert(error.message) );
+      .then((authUser) => navigate("/"))
+      .catch((error) => alert(error.message));
 
   }
 
 
-  const register = async (e) =>{
+  const register = async (e) => {
     e.preventDefault();
-     await createUserWithEmailAndPassword(auth, email, password)
-    .then( authUser => navigate("/"))
-    .catch(err=> alert(err.message))
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then(authUser => navigate("/"))
+      .catch(err => alert(err.message))
 
 
   }
@@ -33,12 +33,12 @@ const SignUp = () => {
   return (
     <div className={classes.root}>
       <Typography variant='h5' align='left'>Sign In</Typography>
-      <form  className={classes.form}>
+      <form className={classes.form}>
         <NetflixInput value={email} type='email'
-        onChange={(e) => setEmail(e.target.value)} className={classes.email} placeholder='Email' radius />
+          onChange={(e) => setEmail(e.target.value)} className={classes.email} placeholder='Email' radius />
         <NetflixInput value={password} type='password'
-        onChange={(e) => setPassword(e.target.value)} className={classes.password} placeholder='Password' radius />
-        
+          onChange={(e) => setPassword(e.target.value)} className={classes.password} placeholder='Password' radius />
+
         <NetflixButton onClick={signIn} type='submit' wide='medium' radius>Sign In</NetflixButton>
         <Typography variant='subtitle2'>
           New to Netflix ?{" "}
@@ -46,6 +46,7 @@ const SignUp = () => {
             Sign Up now.{" "}
           </span>
         </Typography>
+        <div className={classes.fadeBottom}></div>
       </form>
     </div>
   );
@@ -79,6 +80,15 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     " &:hover": {
       textDecoration: "underline",
+    },
+  fadeBottom: {
+      position: "absolute",
+      top: "30vh",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      zIndex: 99,
+      backgroundImage: "linear-gradient(180deg, transparent, rgba(37, 37, 37,0.61), #111)",
     }
   }
 }));

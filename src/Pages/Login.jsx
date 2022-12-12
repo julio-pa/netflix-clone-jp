@@ -11,7 +11,6 @@ const Login = () => {
   const [signIn, setSignIn] = useState(false);
 
   return (
-    // TODO: agregar difuminado oscuro en la parte superior e inferior a la igual que enla pagina.
     <div className={classes.root}>
       <img src={logo} className={classes.logo} alt='logo' />
       <NetflixButton className={classes.session}>Iniciar Sesión</NetflixButton>
@@ -23,11 +22,10 @@ const Login = () => {
               <Typography variant='h5'>Disfruta donde quieras. Cancela cuando quieras.</Typography>
               <Typography variant='h6'>¿Quieres ver Netflix ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Netflix.
               </Typography>
-              {/* //TODO: agregar icono flecha a netflix buttom */}
               <div className={classes.inputBlock}>
-                {/* //TODO: trabajar el input para que  quede igual al de la pagina */}
                 <NetflixInput placeholder='Email' />
                 <NetflixButton>Comenzar</NetflixButton>
+                <div className={classes.fadeBottom}></div>
               </div>
             </>
           )
@@ -72,6 +70,15 @@ const useStyles = makeStyles((theme) => ({
     },
     "& h5": {
       fontWeight: 400,
+    },
+    fadeBottom:{
+      position: "absolute",
+      top: "30vh",
+      bottom: 0,
+      left:0,
+      right: 0,
+      zIndex:99,
+      backgroundImage:"linear-gradient(180deg, transparent, rgba(37, 37, 37,0.61), #111)",
     }
   }
 }));

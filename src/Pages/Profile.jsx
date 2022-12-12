@@ -24,7 +24,7 @@ const Profile = () => {
         <img src={avatar} alt='avatar' />
         <div className={classes.details}>
           <div className={classes.plans}>
-            <Typography variant='h6'>Email usuario</Typography>
+            <Typography variant='h6'>User Email</Typography>
             <Typography className={classes.plansText} variant='h5' gutterBottom>Plans</Typography>
             <Plans cost={7.99}>Netflix Standard</Plans>
             <Plans cost={11.99}>Netflix Basic</Plans>

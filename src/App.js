@@ -8,8 +8,8 @@ import Profile from './Pages/Profile';
 import Paypal from './Pages/Paypal';
 import Home from './Pages/Home';
 import { auth } from './firebase';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, logout, selectUser } from './features/UserSlice';
+import { useDispatch } from 'react-redux';
+import { login, logout } from './features/UserSlice';
 
 
 
@@ -17,7 +17,7 @@ import { login, logout, selectUser } from './features/UserSlice';
 function App() {
   const classes = useStyles();
 
-  const user = useSelector(selectUser);
+// const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
