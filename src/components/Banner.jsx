@@ -1,17 +1,33 @@
 import { Button, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import instance from '../axios';
 import mainBanner from '../img/casa-del-dragon.jpg'
+import request from '../Requests';
+
 
 const Banner = () => {
   const classes = useStyles();
+  const [movie, setMovie] = useState([]);
 
   const truncate = (string, n) => string?.length > n ? `${string.substr(0, n-1)}...` : string
 
+  useEffect(() => {
+    const fetchData = async() => {
+      const requests = await instance.get(request.fetchNetflixOriginals)
+      const random = Math.floor( Math.random()*requests.data.results.length-1)
+      setMovie(requests.data.results[random])
+      return request
+    }
+    fetchData();
+  }, []);
+
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{
+      backgroundImage:`url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`
+    }}>
       <div className={classes.content}>
         <Typography variant='h2' component="h1">
-          Movie Title
+          {movie.name}
         </Typography>
         <div className={classes.buttons}>
           <Button>Play</Button>
@@ -19,7 +35,7 @@ const Banner = () => {
         </div>
         <Typography style={{wordWrap: "break-word"}} variant='h6' className={classes.description}>
           {
-            truncate(" come on and give me that Give me that, arch your back, let me take control When the lights down low When the lights down low Stop playing with me, this is where you belong I know you", 160)
+            truncate(movie?.overview, 160)
           }
         </Typography>
         <div className={classes.fadeBottom}></div>
@@ -31,9 +47,8 @@ const Banner = () => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundImage: `url(${mainBanner})`,
     position: "relative",
-    height: "440px",
+    height: "450px",
     objectFit: "contain",
     backgroundSize: "cover",
     backgroundPosition: "center",
