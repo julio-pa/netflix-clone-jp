@@ -1,7 +1,6 @@
 import { Button, makeStyles, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import instance from '../axios';
-import mainBanner from '../img/casa-del-dragon.jpg'
 import request from '../Requests';
 
 
