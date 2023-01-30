@@ -5,9 +5,9 @@ This project presents the registration page and the netflix home page for the we
 ## Technologies and Frameworks
 
 
-### `html`
+### `Html`
 
-### `css`
+### `Css`
 
 ### `JavaScript`
 
